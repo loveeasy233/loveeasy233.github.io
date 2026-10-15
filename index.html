@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal Health Sync — 个人健康数据同步工具说明与隐私政策。">
+  <title>Personal Health Sync</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header><div class="wrap"><a class="brand" href="./index.html">Personal Health Sync</a><nav aria-label="主导航"><a href="./index.html">工具说明</a><a href="./privacy.html">隐私政策</a></nav></div></header>
+  <main class="wrap"><h1>Personal Health Sync</h1>
+<p>Personal Health Sync 是由部署者管理、仅供其个人使用的健康数据同步工具。它使用 samsung-re-health 从部署者授权的三星健康云端读取可访问的健康数据，在其私人 VPS 中生成分析文件，并使用 rclone 将这些文件上传到其本人授权的 Google Drive。</p>
+<p>本工具与 Samsung、Google 或 OpenAI 没有官方关联。它不提供诊断或治疗服务。</p>
+<h2>功能和授权</h2>
+<ul>
+<li>从授权的三星账户读取私有接口能够提供的数据类型，例如饮食、活动、睡眠、心率和体重。部分类型或加密内容可能无法读取。</li>
+<li>生成按类型划分的 CSV、字段说明、同步状态及部分汇总。</li>
+<li>使用 Google OAuth 的 <code>https://www.googleapis.com/auth/drive.file</code> 权限，在账户持有人自己的 Google Drive 中创建和更新本工具生成的文件，并读回这些文件以校验上传结果。</li>
+<li>Google 登录在账户持有人的本机浏览器中完成；本工具不要求取得 Google 密码。</li>
+<li>账户持有人可以自行将指定的 Drive 文件提供给 ChatGPT 分析。Google Drive 授权本身不会自动授予 ChatGPT 访问权。</li>
+</ul>
+<h2>数据控制</h2>
+<p>上传数据不包含三星或 Google 登录令牌、用户和设备标识、GPS 坐标、签名下载地址或自由文本。VPS 本地原始镜像可能包含比上传文件更多的敏感信息，需由部署者保管。</p>
+<p>可以停止定时任务、撤销 Google 授权，并自行删除 VPS 和 Google Drive 上的数据。撤销授权不会自动删除已有副本。</p>
+<h2>隐私政策和联系</h2>
+<p><a href="./privacy.html">隐私政策</a></p>
+<p>本工具由部署者个人维护。联系邮箱为本工具 Google OAuth 同意页面中显示的“用户支持邮箱”。</p></main>
+  <footer class="wrap">个人维护的同步工具 · <a href="./privacy.html">隐私政策</a></footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal Health Sync — 个人健康数据同步工具说明与隐私政策。">
+  <title>隐私政策 · Personal Health Sync</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header><div class="wrap"><a class="brand" href="./index.html">Personal Health Sync</a><nav aria-label="主导航"><a href="./index.html">工具说明</a><a href="./privacy.html">隐私政策</a></nav></div></header>
+  <main class="wrap"><h1>Personal Health Sync 隐私政策</h1>
+<p>更新日期：2026 年 10 月 15 日。</p>
+<h2>1. 工具及维护者</h2>
+<p>Personal Health Sync 是由部署者个人管理、用于其本人健康数据同步的工具。它在部署者的私人 VPS 上运行，使用 samsung-re-health 和 rclone；本工具与 Samsung、Google 或 OpenAI 没有官方关联。维护者的联系邮箱为本工具 Google OAuth 同意页面中显示的用户支持邮箱。</p>
+<h2>2. 访问的数据及用途</h2>
+<p>经账户持有人授权，本工具读取三星健康云端私有接口能够提供的健康记录，例如饮食、活动、睡眠、心率和体重，并在 VPS 中维护本地镜像。并非所有手机数据类型、附件或加密内容都能读取。</p>
+<p>本工具使用 Google OAuth <code>https://www.googleapis.com/auth/drive.file</code> 权限，创建、读取和更新本工具生成或由账户持有人明确授权本工具访问的 Google Drive 文件及文件夹。当前工作流仅使用本工具创建的专用导出目录。Google 数据用于存储导出、同步、读取校验，以及向账户持有人提供可自行分析的文件。它不要求访问 Drive 中所有其他文件。</p>
+<h2>3. 认证信息</h2>
+<p>Google 登录在账户持有人的本机浏览器完成。本工具不索取或保存 Google 账户密码或验证码。授权流程获得的访问令牌、刷新令牌和客户端配置保存在 VPS 私有配置中，用于更新访问授权。Windows 授权脚本创建的临时配置在正常结束时清理；账户持有人自行下载的原始客户端 JSON 文件需由其本人保管。</p>
+<p>三星授权状态同样保存在 VPS 私有目录，仅用于健康云端读取。认证配置不包含在健康数据导出中，不上传到 Google Drive，不发布在本网站。</p>
+<h2>4. 储存、传输和保留</h2>
+<p>原始健康镜像、授权状态、导出和运行日志储存在部署者的 VPS 中。上传文件储存在账户持有人授权的 Google Drive 中。云端请求和上传使用 HTTPS；Windows 到 VPS 的授权配置传输使用 SSH。本地配置和镜像使用私有文件权限保护；本工具本身未对这些本地文件作额外静态加密。</p>
+<p>上传文件移除账号令牌、用户/设备标识、GPS、签名地址及自由文本。原始镜像可能保留这些健康记录相关字段，因此其敏感程度可能高于上传文件。</p>
+<p>数据保留至账户持有人自行删除；本工具没有自动删除所有历史数据的保留期限。运行日志有容量限制和轮换，仅记录同步状态、数量和安全错误类别。历史有界刷新可能保留已从云端删除的旧记录。</p>
+<h2>5. 分享及外部分析</h2>
+<p>本工具不会将 Drive 文件设置为公开，也不会自动向他人共享。它不会出售数据、用于广告、建立广告档案或使用 Google 用户数据训练通用 AI 模型。</p>
+<p>账户持有人可以通过另外授权的 ChatGPT/Google Drive 连接，将指定导出文件提供给 ChatGPT 分析。此操作向 OpenAI 传递所选数据，并受账户持有人的产品设置及相应服务政策约束；rclone 的 Drive 授权并不自动完成这项连接。本同步程序本身不直接调用 ChatGPT API 或自动发起分析。</p>
+<p>数据在执行功能时由 Samsung、Google 以及部署者选用的 VPS 服务承载。这些服务各自的条款和隐私政策亦适用。本网站仅发布工具说明，不发布实际健康记录或认证配置。</p>
+<p>工具说明网站采用 GitHub Pages 静态托管。网页本身不包含登录表单、跟踪脚本或健康数据；GitHub 作为网站托管服务提供者，可能按其自身隐私声明处理交付和保护网页所需的访问与网络信息。见 <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub 隐私声明</a>。</p>
+<h2>6. 撤销和删除</h2>
+<p>账户持有人可在 Google 账户的第三方连接管理页面撤销本工具的访问权，也可停止 VPS 定时任务。撤销后不能继续用该授权同步，但不会自动删除已经保存的数据。</p>
+<p>如需删除全部本工具数据，需分别删除 VPS 上的本工具数据目录、Google Drive 中本工具生成的文件，以及本人另行下载、备份或提供给其他服务的副本。为避免影响其他 VPS 服务，删除应仅针对本工具目录。</p>
+<h2>7. Google API 数据使用</h2>
+<p>本工具对从 Google API 接收的信息的使用及向其他应用传输这些信息，将遵守 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>，包括其 Limited Use 要求。上述数据访问仅用于本政策披露的个人同步、储存、校验及账户持有人选择的分析功能。</p>
+<h2>8. 政策更新</h2>
+<p>如工具的权限、数据用途、储存或分享方式变更，部署者应先更新本政策及相关授权说明，再使用新增功能。可通过 Google OAuth 同意页面显示的用户支持邮箱联系维护者。</p></main>
+  <footer class="wrap">个人维护的同步工具 · <a href="./privacy.html">隐私政策</a></footer>
+</body>
+</html>
